@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Triggers
+{% endblock title %}
+
+{% block css %}
+<style>
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInFromTop {
+        0% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .animate-slideInFromTop {
+        animation: slideInFromTop 1s ease-in-out;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container py-5 animate-fadeIn" style="min-height: calc(100vh - 150px); font-family: 'Poppins', sans-serif;">
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm animate-slideInFromTop" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="card shadow-lg border-0 animate-slideInFromTop">
+        <!-- Card Header -->
+        <div class="card-header bg-danger text-white text-center py-4" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <h4 class="mb-2" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: 600;">Triggers Overview</h4>
+            <p class="mb-0" style="font-size: 0.9rem; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); line-height: 1.5;">
+                A comprehensive list of actions and timestamps associated with patient records.
+            </p>
+        </div>
+
+        <!-- Table Content -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="thead-light">
+                    <tr class="animate-slideInFromTop">
+                        <th scope="col" style="padding-left: 20px;">TID</th>
+                        <th scope="col" style="padding-left: 20px;">PID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 0.95rem; font-weight: 500;">
+                    {% for post in posts %}
+                    <tr class="animate-fadeIn">
+                        <td style="padding-left: 20px;">{{ post.tid }}</td>
+                        <td style="padding-left: 20px;">{{ post.pid }}</td>
+                        <td>{{ post.email }}</td>
+                        <td>{{ post.name }}</td>
+                        <td>{{ post.action }}</td>
+                        <td>{{ post.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

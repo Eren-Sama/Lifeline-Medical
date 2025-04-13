@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Meet Our Doctors
+{% endblock title %}
+
+{% block css %}
+<style>
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding: 50px 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        color: #d9534f;
+        margin-bottom: 40px;
+    }
+
+    .doctor-cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .doctor-card {
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.8s ease-in-out;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .doctor-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .doctor-card img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 20px auto 10px;
+        display: block;
+        border: 5px solid #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .doctor-card-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .doctor-card h5 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #d9534f;
+        margin-bottom: 10px;
+    }
+
+    .doctor-card p {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.5;
+        margin: 5px 0;
+    }
+
+    .doctor-card p strong {
+        color: #333;
+    }
+
+    .doctor-card-footer {
+        background-color: #f9f9f9;
+        border-top: 1px solid #e6e6e6;
+        padding: 15px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+    <h2 class="section-title">Meet Our Doctors</h2>
+    <div class="doctor-cards-wrapper">
+
+        <!-- Doctor 1 -->
+        <div class="doctor-card">
+            <img src="/static/indian-doctor-portrait_714173-109.avif" alt="Dr. Niranjan Chauhan">
+            <div class="doctor-card-body">
+                <h5>Dr. Niranjan Chauhan</h5>
+                <p><strong>Specialty:</strong> Cardiologist</p>
+                <p><strong>Experience:</strong> 25 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 202</p>
+                <p><strong>Qualifications:</strong> MBBS, MD (Cardiology)</p>
+                <p><strong>Phone:</strong> 9876543210</p>
+                <p><strong>Bio:</strong> Leading Cardiologist with expertise in preventive heart care.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Mon-Fri, 9 AM - 5 PM
+            </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="doctor-card">
+            <img src="/static/istockphoto-177373093-612x612.jpg" alt="Dr. Angad Bhatia">
+            <div class="doctor-card-body">
+                <h5>Dr. Angad Bhatia</h5>
+                <p><strong>Specialty:</strong> Dermatologist</p>
+                <p><strong>Experience:</strong> 37 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 104</p>
+                <p><strong>Qualifications:</strong> MBBS, MD (Dermatology)</p>
+                <p><strong>Phone:</strong> 9876543211</p>
+                <p><strong>Bio:</strong> Renowned Dermatologist specializing in cosmetic dermatology.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Mon, Wed, Fri, 10 AM - 4 PM
+            </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="doctor-card">
+            <img src="/static/photo-1582750433449-648ed127bb54.jpeg" alt="Dr. Neeraj Kumar">
+            <div class="doctor-card-body">
+                <h5>Dr. Neeraj Kumar</h5>
+                <p><strong>Specialty:</strong> Anesthesiologist</p>
+                <p><strong>Experience:</strong> 20 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 305</p>
+                <p><strong>Qualifications:</strong> MBBS, MD (Anesthesia)</p>
+                <p><strong>Phone:</strong> 9876543212</p>
+                <p><strong>Bio:</strong> Expert in regional and general anesthesia for surgical procedures.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Mon-Fri, 8 AM - 4 PM
+            </div>
+        </div>
+
+        <!-- Doctor 4 -->
+        <div class="doctor-card">
+            <img src="/static/indian-doctor-portrait_714173-116.avif" alt="Dr. Abhishek Pathak">
+            <div class="doctor-card-body">
+                <h5>Dr. Abhishek Pathak</h5>
+                <p><strong>Specialty:</strong> Neurologist</p>
+                <p><strong>Experience:</strong> 10 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 405</p>
+                <p><strong>Qualifications:</strong> MBBS, MD (Neurology)</p>
+                <p><strong>Phone:</strong> 9876543213</p>
+                <p><strong>Bio:</strong> Skilled Neurologist specializing in neurological disorders.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Tue, Thu, Sat, 9 AM - 4 PM
+            </div>
+        </div>
+
+        <!-- Doctor 5 -->
+        <div class="doctor-card">
+            <img src="/static/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL2hpcHBvdW5pY29ybl9hX3Bob3RvX29mX2FfbWlkZGxlX2FnZV9tYWxlX2luZGl.jpg" alt="Dr. Amit Rastogi">
+            <div class="doctor-card-body">
+                <h5>Dr. Amit Rastogi</h5>
+                <p><strong>Specialty:</strong> Orthopedic</p>
+                <p><strong>Experience:</strong> 45 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 208</p>
+                <p><strong>Qualifications:</strong> MBBS, MS (Orthopedics)</p>
+                <p><strong>Phone:</strong> 9876543214</p>
+                <p><strong>Bio:</strong> Orthopedic Surgeon focusing on joint replacements and trauma.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Mon-Fri, 9 AM - 6 PM
+            </div>
+        </div>
+
+        <!-- Doctor 6 -->
+        <div class="doctor-card">
+            <img src="/static/360_F_300220248_VKEd3QKx31kzqHcwZfnGmWKZLYTjf8R0.jpg" alt="Dr. Vivek Rai">
+            <div class="doctor-card-body">
+                <h5>Dr. Vivek Rai</h5>
+                <p><strong>Specialty:</strong> General Physician</p>
+                <p><strong>Experience:</strong> 7 years</p>
+                <p><strong>Location:</strong> Main Hospital - Room 102</p>
+                <p><strong>Qualifications:</strong> MBBS</p>
+                <p><strong>Phone:</strong> 9876543215</p>
+                <p><strong>Bio:</strong> Compassionate General Physician focusing on holistic care.</p>
+            </div>
+            <div class="doctor-card-footer">
+                Working Hours: Mon-Fri, 9 AM - 5 PM
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

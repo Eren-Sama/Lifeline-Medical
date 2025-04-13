@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Patient Booking
+{% endblock title %}
+
+{% block body %}
+<div class="container py-5 d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 150px);">
+    <div class="row shadow-lg w-100" style="max-width: 900px; border-radius: 15px; overflow: hidden;">
+        <!-- Left Segment -->
+        <div class="col-lg-6 p-0 position-relative">
+            <div class="d-flex flex-column h-100 text-white text-center align-items-center justify-content-center position-absolute w-100 h-100" 
+                 style="background-color: rgba(0, 0, 0, 0.5); z-index: 1;">
+                <h3 class="mb-3 text-white"
+                    style="font-weight: bold; text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9); z-index: 2;">Update Your Slot</h3>
+                <p class="px-3"
+                   style="text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); font-size: 1.1rem; z-index: 2;">
+                   Ensure your details are accurate to help us serve you better.</p>
+            </div>
+            <img src="{{ url_for('static', filename='274bdbe0ffd8db7bd401db82ba05b356.jpg') }}" alt="Update Your Slot"
+                 class="img-fluid w-100 h-100"
+                 style="object-fit: cover; z-index: 0;">
+        </div>
+
+        <!-- Right Segment -->
+        <div class="col-lg-6 bg-light p-4 animate-fade-in-right">
+            <h4 class="text-center text-danger mb-4">Edit Booking</h4>
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form action="/edit/{{ posts.pid }}" method="post" class="animate-fade-in-up">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" value="{{ current_user.email }}" name="email" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ posts.name }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="custom-select" id="gender" name="gender" required>
+                        <option selected>{{ posts.gender }}</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="slot">Slot</label>
+                    <select class="custom-select" id="slot" name="slot" required>
+                        <option selected>{{ posts.slot }}</option>
+                        <option value="morning">Morning</option>
+                        <option value="evening">Evening</option>
+                        <option value="night">Night</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" class="form-control" id="time" name="time" value="{{ posts.time }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" value="{{ posts.date }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="disease">Disease</label>
+                    <input type="text" class="form-control" id="disease" name="disease" value="{{ posts.disease }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="dept">Doctor Department</label>
+                    <input type="text" class="form-control" id="dept" name="dept" value="{{ posts.dept }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Phone Number</label>
+                    <input type="number" class="form-control" id="number" name="number" value="{{ posts.number }}" required>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .animate-fade-in-right {
+        animation: fadeInRight 1s ease-in-out;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock body %}

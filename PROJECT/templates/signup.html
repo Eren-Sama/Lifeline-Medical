@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Signup
+{% endblock title %}
+
+{% block body %}
+<div class="d-flex justify-content-center align-items-center position-relative" style="height: 100vh; overflow: hidden;">
+    <!-- Background Image -->
+    <div class="position-absolute w-100 h-100" style="z-index: -1; overflow: hidden;">
+        <img src="{{ url_for('static', filename='pexels-pixabay-40568.jpg') }}" 
+             alt="Background" 
+             class="w-100 h-100" 
+             style="object-fit: cover; filter: brightness(50%);">
+    </div>
+
+    <!-- Signup Form Card -->
+    <div class="card p-4 shadow animated fadeInDown" style="max-width: 400px; width: 100%; background: #fff; border-radius: 10px;">
+        <h4 class="text-center text-danger mb-4 animated fadeInUp">Signup</h4>
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show animated fadeIn" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/signup" method="post" class="animated fadeInUp" style="animation-delay: 0.5s;">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="usertype">Select UserType</label>
+                <select class="form-control" id="usertype" name="usertype" required>
+                    <option value="" selected>Select</option>
+                    <option value="Patient">Patient</option>
+                    <option value="Doctor">Doctor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">Signup</button>
+        </form>
+        <p class="text-center mt-3 animated fadeInUp" style="animation-delay: 0.7s;">
+            Already a user? <a href="/login" class="text-danger">Login</a>
+        </p>
+    </div>
+</div>
+{% endblock body %}

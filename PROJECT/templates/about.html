@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Lifeline Medical</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #f5f5f5, #f0f0f0);
+            color: #444;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #fff;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 1s forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 600;
+            color: #e74c3c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar .logo:hover {
+            color: #3498db;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            margin-right: 15px;
+            object-fit: contain;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+            font-size: 16px;
+        }
+
+        .navbar ul li a:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 60px 20px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 40px 20px;
+            border-radius: 10px;
+            opacity: 0;
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .about-us img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: imageFadeIn 1s forwards;
+        }
+
+        @keyframes imageFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .about-us h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+            opacity: 0;
+            animation: fadeInText 1s forwards;
+        }
+
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .about-us p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInText 1.5s forwards;
+        }
+
+        /* Info Cards Section */
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeInCards 1s forwards;
+        }
+
+        @keyframes fadeInCards {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .info-card {
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 60px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a class="logo" href="{{ url_for('index') }}">
+            <img src="static/5a696cfc-6f35-4789-8f77-358f4a852cd3.png" alt="Hospital Logo">
+            Lifeline Medical
+        </a>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+        </ul>
+    </header>
+
+    <section class="about-us">
+        <img src="static/clean-empty-hospital-ward-ready-receive-patients-reflecting-modern-medical-care.jpg" alt="Hospital Image">
+        <h1>About Lifeline Medical</h1>
+        <p>
+            Lifeline Medical is committed to providing world-class healthcare to all our patients. We combine cutting-edge technology with compassionate care, ensuring each individual receives the best treatment tailored to their needs. Our team of experienced doctors and staff work tirelessly to maintain a healthy and safe environment for everyone.
+        </p>
+        <p>
+            We offer a wide range of services, from preventive care to complex medical procedures, to ensure the well-being of our community. Our hospital is equipped with state-of-the-art facilities and staffed by professionals who are dedicated to improving the health and quality of life for our patients.
+        </p>
+        <p>
+            We prioritize your health and well-being. At Lifeline Medical, every patient is treated with respect, kindness, and the utmost care. We are here to be your trusted healthcare partner every step of the way.
+        </p>
+
+        <!-- Info Cards Section -->
+        <div class="info-cards">
+            <div class="info-card">
+                <img src="static/20.jpg" alt="Card Image 1">
+                <h3>Expert Doctors</h3>
+                <p>Our team of doctors are highly trained and passionate about your health, offering a variety of services to meet your needs.</p>
+            </div>
+            <div class="info-card">
+                <img src="static/bg1.jpg" alt="Card Image 2">
+                <h3>Advanced Technology</h3>
+                <p>We utilize the latest medical technologies to ensure accurate diagnoses and effective treatments for our patients.</p>
+            </div>
+            <div class="info-card">
+                <img src="static/man-working-as-paediatrician.jpg" alt="Card Image 3">
+                <h3>Patient Care</h3>
+                <p>Our compassionate staff is dedicated to providing personalized care, making sure every patient feels comfortable and safe.</p>
+            </div>
+            <div class="info-card">
+                <img src="static/medical-expert-patient-discussing-diagnostic-results-modern-cabinet.jpg" alt="Card Image 4">
+                <h3>Wellness Programs</h3>
+                <p>We offer wellness programs designed to keep you healthy and informed, ensuring a long and healthy life.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Lifeline Medical. All rights reserved. <a href="{{ url_for('policy') }}">Privacy Policy</a></p>
+    </footer>
+</body>
+
+</html>

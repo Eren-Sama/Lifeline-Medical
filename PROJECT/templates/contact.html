@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block body %}
+<style>
+    /* Animations */
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+    .fadeInDown {
+        animation-name: fadeInDown;
+    }
+    .fadeInUp {
+        animation-name: fadeInUp;
+    }
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Background Styling */
+    .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/static/hands-unrecognizable-female-doctor-writing-form-typing-laptop-keyboard.jpg') no-repeat center center/cover;
+        z-index: -1;
+        filter: brightness(0.6);
+    }
+
+    /* Card Styling */
+    .contact-card {
+        max-width: 650px;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.5); /* Transparency */
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+    }
+
+    /* Text Styling */
+    .contact-info p {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    .contact-info strong {
+        color: #dc3545;
+    }
+    .contact-info a {
+        color: #dc3545;
+        text-decoration: none;
+    }
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+
+    /* Button Styling */
+    .btn-appointment {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #dc3545;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-appointment:hover {
+        background-color: #c0392b;
+        transform: scale(1.05);
+    }
+
+    /* Container for Contact Details and Map */
+    .contact-map-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    /* Styling for Text Block */
+    .contact-info-wrapper {
+        flex: 1;
+    }
+
+</style>
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh; overflow: hidden; position: relative;">
+    <!-- Background Image -->
+    <div class="bg-image"></div>
+    
+    <!-- Contact and Map Container -->
+    <div class="contact-map-container animated fadeInUp">
+        <!-- Contact Info Card -->
+        <div class="contact-info-wrapper">
+            <div class="card p-4 shadow contact-card animated fadeInDown">
+                <h4 class="text-center text-danger mb-4 animated fadeInUp">Contact Us</h4>
+                <div class="contact-info">
+                    <p class="text-center animated fadeInUp" style="animation-delay: 0.2s;">
+                        <strong>Hospital Name:</strong> Lifeline Medical
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 0.4s;">
+                        <strong>Address:</strong> 175 Healthcare Street, Wellness City, HC 45678
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 0.6s;">
+                        <strong>Phone:</strong> +91 9567124565/67
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 0.8s;">
+                        <strong>Email:</strong> <a href="mailto:info@lifecarehospital.com">info@lifelinemedical.com</a>
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 1s;">
+                        <strong>Working Hours:</strong> Mon - Fri: 8 AM - 6 PM, Sat - Sun: 9 AM - 4 PM
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 1.2s;">
+                        <strong>Emergency Services:</strong> Available 24/7 For Urgent Care
+                    </p>
+                    <p class="text-center animated fadeInUp" style="animation-delay: 1.4s;">
+                        <strong>Social Media:</strong> 
+                        <a href="https://facebook.com/lifelinemedical" target="_blank">Facebook</a> | 
+                        <a href="https://twitter.com/lifelinemedical" target="_blank">Twitter</a> | 
+                        <a href="https://instagram.com/lifelinemedical" target="_blank">Instagram</a>
+                    </p>
+                </div>
+                
+                <div class="text-center mt-4">
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.usertype == "Doctor" %}
+                            <p class="animated fadeInDown" style="animation-delay: 1.6s;">Thank you for helping patients! We appreciate your dedication.</p>
+                        {% else %}
+                            <p class="animated fadeInDown" style="animation-delay: 1.6s;">
+                                Need assistance or want to schedule a visit? We're here to help you get the care you need!
+                            </p>
+                            <a href="{{ url_for('patient') }}" class="btn-appointment animated fadeInDown" style="animation-delay: 1.8s;">Book an Appointment</a>
+                        {% endif %}
+                    {% else %}
+                        <p class="animated fadeInDown" style="animation-delay: 1.6s;">Need assistance or want to schedule a visit? We're here to help you get the care you need!</p>
+                        <a href="{{ url_for('signup') }}" class="btn-appointment animated fadeInDown" style="animation-delay: 1.8s;">Book an Appointment</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
